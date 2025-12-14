@@ -11,22 +11,22 @@ import DrumKit from '../assets/Drum kit.jpeg';
 const Works = () => {
   const projects = [
     {
-      title: 'School Portal',
+      title: 'Barcode Scanner App',
       image: Schoolportal,
       demo: '/',
-      code: 'https://github.com/Hammad153/University-portal.git',
+      code: 'https://github.com/muhammed-codes/scan-item',
     },
     {
-      title: 'Foody Website',
+      title: 'Family Portal',
       image: Foody,
       demo: '/',
-      code: 'https://github.com/Hammad153/Foody-site',
+      code: 'https://github.com/bomaolad/the_royal_chuckles',
     },
     {
-      title: 'Todo List App',
+      title: 'Gemini Clone',
       image: Todo,
-      demo: 'https://my-todo-app-gold-phi.vercel.app/',
-      code: 'https://github.com/Hammad153/TodoList-App',
+      demo: '',
+      code: 'https://github.com/bomaolad/gemini-clone',
     },
     {
       title: 'Random Quote Generator',
