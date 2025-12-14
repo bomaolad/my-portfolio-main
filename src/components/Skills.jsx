@@ -1,23 +1,24 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-
 import Html from '../assets/html.png';
 import Css from '../assets/CSS-Logo.png';
-import Javascript from '../assets/JavaScript-logo.png';
 import Tailwind from '../assets/images.jpeg';
 import Reactlogo from '../assets/react.jpeg';
-import Sql from '../assets/sql.png';
+import ReactNative from '../assets/react-native.png';
+import Postgres from '../assets/postgresql.png';
 import Express from '../assets/Express.jpeg';
 import Mongo from '../assets/Mongo.png';
+import JS_TS from '../assets/js-ts.png';
 
 const Skills = () => {
   const skills = [
     { name: 'HTML', icon: Html },
     { name: 'CSS', icon: Css },
-    { name: 'JAVASCRIPT', icon: Javascript },
+    { name: 'JAVASCRIPT/TYPESCRIPT', icon: JS_TS },
     { name: 'TAILWIND CSS', icon: Tailwind },
     { name: 'REACT', icon: Reactlogo },
-    { name: 'SQL', icon: Sql },
+    { name: 'REACT NATIVE', icon: ReactNative },
+    { name: 'POSTGRESQL', icon: Postgres },
     { name: 'MONGO DB', icon: Mongo },
     { name: 'EXPRESS JS', icon: Express },
   ];
