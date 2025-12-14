@@ -15,36 +15,42 @@ const Works = () => {
       image: Scanner,
       demo: 'https://drive.google.com/drive/folders/1aBmXOo3XxE_ADhKiCiWuxh67S19TQ3J_?usp=sharing',
       code: 'https://github.com/muhammed-codes/scan-item',
+      technologies: ['React Native', 'Expo', 'Camera API', 'CSS'],
     },
     {
       title: 'Family Portal',
       image: Portal,
-      demo: '/',
-      code: 'https://github.com/bomaolad/the_royal_chuckles',
+      demo: 'https://royal-chuckles-family-portal.vercel.app/',
+      code: 'https://github.com/bomaolad/royal-chuckles-family-portal',
+      technologies: ['React', 'Typescript', 'RESTAPI', 'Next JS'],
     },
     {
       title: 'Gemini Clone',
       image: Gemini,
-      demo: '',
+      demo: 'https://gemini-clone-ruby-eight.vercel.app/',
       code: 'https://github.com/bomaolad/gemini-clone',
+      technologies: ['React', 'Gemini API', 'Tailwind', 'JavaScript'],
     },
     {
       title: 'HRS App',
       image: Hrs,
       demo: '',
       code: 'https://github.com/bomaolad/hrs-app',
+      technologies: ['React Native', 'Tailwind', 'TypeScript'],
     },
     {
       title: 'JS Dice Game',
       image: DiceGame,
       demo: 'https://dice-game-i6kj.vercel.app/',
       code: 'https://github.com/bomaolad/dicee-challenge',
+      technologies: ['JavaScript', 'HTML', 'CSS'],
     },
     {
       title: 'Linkup Social Media App',
       image: Linkup,
       demo: '',
       code: 'https://github.com/bomaolad/linkup',
+      technologies: ['React', 'Supabase', 'Tailwind', 'Next JS'],
     }
   ];
 
@@ -189,6 +195,38 @@ const Works = () => {
                           Code
                         </button>
                       </motion.a>
+                    </div>
+
+                    {/* Technologies */}
+                    <div className="mt-4 pt-4 border-t border-border/50">
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, techIndex) => (
+                          <motion.span
+                            key={tech}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ 
+                              duration: 0.3, 
+                              delay: techIndex * 0.1,
+                              ease: "easeOut"
+                            }}
+                            whileHover={{ 
+                              scale: 1.1, 
+                              y: -2,
+                              boxShadow: "0 4px 12px rgba(139, 92, 246, 0.3)"
+                            }}
+                            className="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full 
+                                       bg-primary/20 text-primary-light border border-primary/30
+                                       hover:bg-primary/30 hover:border-primary/60
+                                       transition-all duration-300 cursor-default
+                                       backdrop-blur-sm shadow-sm"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary mr-2 animate-pulse"></span>
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
