@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { FaBars, FaTimes, FaLinkedin, FaGithub, FaTwitter} from  "react-icons/fa";
 import { HiOutlineMail } from 'react-icons/hi';
-import { BsFillPersonLinesFill } from 'react-icons/bs';
 
 import { Link } from 'react-scroll'
 function Header() {
@@ -92,7 +91,7 @@ function Header() {
             </a>
           </li>
           <li className='w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-black'>
-            <a className='flex justify-between items-center w-full text-gray-300' href="https://x.com/compose/post" target='blank'>
+            <a className='flex justify-between items-center w-full text-gray-300' href="https://x.com/muhammedbello_" target='blank'>
              Personal <FaTwitter size={30} />
             </a>
           </li>
