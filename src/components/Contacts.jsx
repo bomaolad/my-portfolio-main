@@ -65,7 +65,7 @@ const Contacts = () => {
 
     // Validate form
     if (!validateForm()) {
-      toast.error('Please fix the errors in the form', {
+      toast.error('Kindly fill all the required fields correctly', {
         icon: '⚠️',
         style: {
           background: '#1e293b',
