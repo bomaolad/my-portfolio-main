@@ -7,6 +7,8 @@ import Reactlogo from '../assets/react.jpeg';
 import ReactNative from '../assets/react-native.png';
 import Postgres from '../assets/postgresql.png';
 import Express from '../assets/Express.jpeg';
+import Next from '../assets/next.png';
+import Graphql from '../assets/graphql.png';
 import Mongo from '../assets/Mongo.png';
 import JS_TS from '../assets/js-ts.png';
 
@@ -21,6 +23,8 @@ const Skills = () => {
     { name: 'POSTGRESQL', icon: Postgres },
     { name: 'MONGO DB', icon: Mongo },
     { name: 'EXPRESS JS', icon: Express },
+    { name: 'NEXT JS', icon: Next },
+    { name: 'GRAPHQL', icon: Graphql },
   ];
 
   const containerVariants = {
@@ -121,13 +125,13 @@ const Skills = () => {
                   
                   <div className="relative mb-6">
                     <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-20 rounded-xl blur-md transition-opacity duration-300"></div>
-                    <div className="relative bg-surface-lighter/30 p-4 rounded-xl flex items-center justify-center">
+                    <div className="relative bg-surface-lighter/30 rounded-xl overflow-hidden w-full h-24 flex items-center justify-center">
                       <motion.img 
-                        className='w-16 h-16 object-contain' 
+                        className='w-full h-full object-cover' 
                         src={skill.icon} 
                         alt={`${skill.name} icon`}
-                        whileHover={{ rotate: [0, -10, 10, 0] }}
-                        transition={{ duration: 0.5 }}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
                       />
                     </div>
                   </div>
