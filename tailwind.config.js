@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -46,32 +47,32 @@ module.exports = {
           light: '#f43f5e',   // rose-500
           dark: '#be123c',    // rose-700
         },
-        // Surface colors - Backgrounds
+        // Surface colors - Backgrounds (using CSS variables for theme switching)
         surface: {
-          DEFAULT: '#0f172a', // slate-900
-          light: '#1e293b',   // slate-800
-          lighter: '#334155', // slate-700
-          card: '#1e293b',    // slate-800
-          hover: '#334155',   // slate-700
+          DEFAULT: 'var(--color-surface)',
+          light: 'var(--color-surface-light)',
+          lighter: 'var(--color-surface-lighter)',
+          card: 'var(--color-surface-light)',
+          hover: 'var(--color-surface-lighter)',
         },
-        // Text colors
+        // Text colors (using CSS variables for theme switching)
         text: {
-          DEFAULT: '#f8fafc', // slate-50
-          primary: '#f8fafc', // slate-50
-          secondary: '#cbd5e1', // slate-300
-          muted: '#94a3b8',   // slate-400
-          inverse: '#0f172a', // slate-900
+          DEFAULT: 'var(--color-text-primary)',
+          primary: 'var(--color-text-primary)',
+          secondary: 'var(--color-text-secondary)',
+          muted: 'var(--color-text-muted)',
+          inverse: '#0f172a',
         },
-        // Border colors
+        // Border colors (using CSS variables for theme switching)
         border: {
-          DEFAULT: '#334155', // slate-700
-          light: '#475569',   // slate-600
-          muted: '#1e293b',   // slate-800
+          DEFAULT: 'var(--color-border)',
+          light: 'var(--color-border-light)',
+          muted: 'var(--color-surface-light)',
         },
         // Muted backgrounds
         muted: {
-          DEFAULT: '#1e293b', // slate-800
-          foreground: '#94a3b8', // slate-400
+          DEFAULT: 'var(--color-surface-light)',
+          foreground: 'var(--color-text-muted)',
         },
       },
     },

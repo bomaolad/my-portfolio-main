@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { FaBars, FaTimes, FaGithub, FaTwitter } from "react-icons/fa";
+import { FaBars, FaTimes, FaGithub, FaTwitter, FaSun, FaMoon } from "react-icons/fa";
 import { HiOutlineMail } from 'react-icons/hi';
 import { Link } from 'react-scroll'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTheme } from '../context/ThemeContext';
 
 function Header() {
   const [nav, setNav] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
   
   const handleClick = () => setNav(!nav);
 
@@ -57,7 +59,7 @@ function Header() {
         <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></div>
       </motion.div>
 
-      <ul className='hidden md:flex gap-8'>
+      <ul className='hidden md:flex gap-8 items-center'>
         {navItems.map((item, i) => (
           <motion.li 
             key={item} 
@@ -73,16 +75,63 @@ function Header() {
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
           </motion.li>
         ))}
+        
+        {/* Theme Toggle Button */}
+        <motion.button
+          onClick={toggleTheme}
+          className="ml-4 p-3 rounded-full bg-surface-lighter hover:bg-primary/20 border border-border hover:border-primary/50 text-text-secondary hover:text-primary-light transition-all duration-300"
+          whileHover={{ scale: 1.1, rotate: 15 }}
+          whileTap={{ scale: 0.9 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
+          <AnimatePresence mode="wait">
+            {isDark ? (
+              <motion.div
+                key="sun"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <FaSun size={18} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="moon"
+                initial={{ rotate: 90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: -90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <FaMoon size={18} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
       </ul>
 
-      <motion.div 
-        onClick={handleClick} 
-        className='md:hidden z-10 cursor-pointer text-text-secondary hover:text-primary-light transition-colors duration-300'
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        {!nav ? <FaBars size={24} /> : <FaTimes size={24} />}
-      </motion.div>
+      {/* Mobile: Theme Toggle + Menu Button */}
+      <div className="md:hidden flex items-center gap-4">
+        <motion.button
+          onClick={toggleTheme}
+          className="p-2.5 rounded-full bg-surface-lighter hover:bg-primary/20 border border-border text-text-secondary hover:text-primary-light transition-all duration-300"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          {isDark ? <FaSun size={18} /> : <FaMoon size={18} />}
+        </motion.button>
+        
+        <motion.div 
+          onClick={handleClick} 
+          className='z-10 cursor-pointer text-text-secondary hover:text-primary-light transition-colors duration-300'
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          {!nav ? <FaBars size={24} /> : <FaTimes size={24} />}
+        </motion.div>
+      </div>
 
       <AnimatePresence>
         {nav && (
