@@ -7,21 +7,21 @@ function Footer() {
   const currentYear = date.getFullYear();
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/ismail-hammad-bb73152b9', color: 'hover:text-blue-400' },
-    { name: 'Github', icon: FaGithub, url: 'https://github.com/bomaolad', color: 'hover:text-gray-300' },
-    { name: 'Twitter', icon: FaTwitter, url: 'https://x.com/muhammedbello_', color: 'hover:text-sky-400' },
-    { name: 'Email', icon: HiOutlineMail, url: 'mailto:bellomuhammadoladimeji@gmail.com', color: 'hover:text-emerald-400' },
+    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/ismail-hammad-bb73152b9' },
+    { name: 'Github', icon: FaGithub, url: 'https://github.com/bomaolad' },
+    { name: 'Twitter', icon: FaTwitter, url: 'https://x.com/muhammedbello_' },
+    { name: 'Email', icon: HiOutlineMail, url: 'mailto:bellomuhammadoladimeji@gmail.com' },
   ];
 
   return (
-    <footer className='bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden'>
+    <footer className='bg-surface relative overflow-hidden'>
       {/* Decorative top border */}
-      <div className="h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500"></div>
+      <div className="h-1 bg-primary"></div>
       
       {/* Background glow effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute w-64 h-64 -bottom-32 -left-32 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute w-64 h-64 -bottom-32 -right-32 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute w-64 h-64 -bottom-32 -left-32 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div className="absolute w-64 h-64 -bottom-32 -right-32 bg-primary/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className='max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 py-12 relative z-10'>
@@ -30,23 +30,23 @@ function Footer() {
           
           {/* Brand Section */}
           <div className='space-y-4'>
-            <h3 className='text-3xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent'>
+            <h3 className='text-3xl font-bold text-primary-light'>
               Muhammed Bello
             </h3>
-            <p className='text-gray-400 text-sm max-w-xs'>
+            <p className='text-text-muted text-sm max-w-xs'>
               FullStack Developer passionate about creating beautiful, functional web experiences that make a difference.
             </p>
           </div>
 
           {/* Quick Links */}
           <div className='space-y-4'>
-            <h4 className='text-lg font-semibold text-white mb-4'>Quick Links</h4>
+            <h4 className='text-lg font-semibold text-text-primary mb-4'>Quick Links</h4>
             <nav className='flex flex-col space-y-2'>
               {['Home', 'About', 'Skills', 'Work', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className='text-gray-400 hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-400 hover:to-purple-400 hover:bg-clip-text transition-all duration-300 w-fit'
+                  className='text-text-muted hover:text-primary-light transition-all duration-300 w-fit'
                 >
                   {item}
                 </a>
@@ -56,7 +56,7 @@ function Footer() {
 
           {/* Social Links */}
           <div className='space-y-4'>
-            <h4 className='text-lg font-semibold text-white mb-4'>Connect With Me</h4>
+            <h4 className='text-lg font-semibold text-text-primary mb-4'>Connect With Me</h4>
             <div className='flex flex-wrap gap-4'>
               {socialLinks.map((social) => {
                 const Icon = social.icon;
@@ -69,9 +69,9 @@ function Footer() {
                     className='group relative'
                     aria-label={social.name}
                   >
-                    <div className='absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg blur opacity-0 group-hover:opacity-60 transition duration-300'></div>
-                    <div className={`relative bg-slate-700/50 p-3 rounded-lg border border-gray-600 group-hover:border-transparent transition-all duration-300 ${social.color}`}>
-                      <Icon size={24} className='text-gray-400 group-hover:scale-110 transition-transform duration-300' />
+                    <div className='absolute inset-0 bg-primary rounded-lg blur opacity-0 group-hover:opacity-60 transition duration-300'></div>
+                    <div className='relative bg-surface-light p-3 rounded-lg border border-border group-hover:border-primary/50 hover:text-primary-light transition-all duration-300'>
+                      <Icon size={24} className='text-text-muted group-hover:text-primary-light group-hover:scale-110 transition-all duration-300' />
                     </div>
                   </a>
                 );
@@ -81,22 +81,22 @@ function Footer() {
         </div>
 
         {/* Divider */}
-        <div className='h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-8'></div>
+        <div className='h-px bg-border mb-8'></div>
 
         {/* Bottom Section */}
         <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
-          <p className='text-gray-400 text-sm flex items-center gap-2'>
+          <p className='text-text-muted text-sm flex items-center gap-2'>
             © {currentYear} Muhammed Bello. Made with 
-            <FaHeart className='text-red-500 animate-pulse' size={14} />
+            <FaHeart className='text-accent animate-pulse' size={14} />
             and lots of coffee
           </p>
           
-          <div className='flex items-center gap-6 text-sm text-gray-400'>
-            <a href='#privacy' className='hover:text-cyan-400 transition-colors duration-300'>
+          <div className='flex items-center gap-6 text-sm text-text-muted'>
+            <a href='#privacy' className='hover:text-primary-light transition-colors duration-300'>
               Privacy Policy
             </a>
-            <span className='text-gray-600'>|</span>
-            <a href='#terms' className='hover:text-purple-400 transition-colors duration-300'>
+            <span className='text-border'>|</span>
+            <a href='#terms' className='hover:text-secondary-light transition-colors duration-300'>
               Terms of Service
             </a>
           </div>
@@ -108,10 +108,10 @@ function Footer() {
           className='fixed bottom-8 right-8 group'
           aria-label='Back to top'
         >
-          <div className='absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full blur-lg opacity-60 group-hover:opacity-100 transition duration-300'></div>
-          <div className='relative bg-slate-800 p-3 rounded-full border border-purple-500/30 group-hover:border-purple-500 transition-all duration-300 hover:scale-110'>
+          <div className='absolute inset-0 bg-primary rounded-full blur-lg opacity-60 group-hover:opacity-100 transition duration-300'></div>
+          <div className='relative bg-surface p-3 rounded-full border border-primary/30 group-hover:border-primary transition-all duration-300 hover:scale-110'>
             <svg
-              className='w-6 h-6 text-white'
+              className='w-6 h-6 text-text-primary'
               fill='none'
               stroke='currentColor'
               viewBox='0 0 24 24'
