@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import toast, { Toaster } from 'react-hot-toast'
 import { HiMail, HiUser, HiChatAlt2 } from 'react-icons/hi'
 
 const Contacts = () => {
@@ -8,18 +9,73 @@ const Contacts = () => {
     email: '',
     message: ''
   });
+  const [errors, setErrors] = useState({});
   const [focusedField, setFocusedField] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate form
+    if (!validateForm()) {
+      toast.error('Please fix the errors in the form', {
+        icon: '⚠️',
+        style: {
+          background: '#1e293b',
+          color: '#f8fafc',
+          border: '1px solid #334155',
+        },
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -32,13 +88,36 @@ const Contacts = () => {
       });
 
       if (response.ok) {
-        alert('Message sent successfully! I\'ll get back to you soon.');
+        toast.success('Message sent successfully! I\'ll get back to you soon.', {
+          icon: '🎉',
+          duration: 5000,
+          style: {
+            background: '#1e293b',
+            color: '#f8fafc',
+            border: '1px solid #0d9488',
+          },
+        });
         setFormData({ name: '', email: '', message: '' });
+        setErrors({});
       } else {
-        alert('Something went wrong. Please try again.');
+        toast.error('Something went wrong. Please try again.', {
+          icon: '❌',
+          style: {
+            background: '#1e293b',
+            color: '#f8fafc',
+            border: '1px solid #e11d48',
+          },
+        });
       }
     } catch (error) {
-      alert('Error sending message. Please try again.');
+      toast.error('Error sending message. Please try again.', {
+        icon: '❌',
+        style: {
+          background: '#1e293b',
+          color: '#f8fafc',
+          border: '1px solid #e11d48',
+        },
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -73,8 +152,28 @@ const Contacts = () => {
     }
   };
 
+  const getInputBorderClass = (fieldName) => {
+    if (errors[fieldName]) {
+      return 'border-accent shadow-lg shadow-accent/20';
+    }
+    if (focusedField === fieldName) {
+      if (fieldName === 'name') return 'border-primary shadow-lg shadow-primary/20';
+      if (fieldName === 'email') return 'border-secondary shadow-lg shadow-secondary/20';
+      if (fieldName === 'message') return 'border-primary shadow-lg shadow-primary/20';
+    }
+    return 'border-border hover:border-border-light';
+  };
+
   return (
     <div name='contact' className='bg-surface-light w-full min-h-screen flex justify-center items-center p-4 relative overflow-hidden'>
+      
+      {/* Toast Container */}
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 4000,
+        }}
+      />
       
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -127,7 +226,7 @@ const Contacts = () => {
         >
           <div className="absolute -inset-1 bg-primary rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
           
-          <div className='relative bg-surface backdrop-blur-sm p-8 sm:p-10 rounded-3xl border border-border shadow-2xl'>
+          <form onSubmit={handleSubmit} className='relative bg-surface backdrop-blur-sm p-8 sm:p-10 rounded-3xl border border-border shadow-2xl'>
             
             {/* Name Field */}
             <motion.div className="mb-6" variants={formFieldVariants}>
@@ -143,14 +242,18 @@ const Contacts = () => {
                 onChange={handleChange}
                 onFocus={() => setFocusedField('name')}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-4 py-4 bg-surface-light border-2 rounded-xl text-text-primary placeholder-text-muted focus:outline-none transition-all duration-300 ${
-                  focusedField === 'name' 
-                    ? 'border-primary shadow-lg shadow-primary/20' 
-                    : 'border-border hover:border-border-light'
-                }`}
-                required
+                className={`w-full px-4 py-4 bg-surface-light border-2 rounded-xl text-text-primary placeholder-text-muted focus:outline-none transition-all duration-300 ${getInputBorderClass('name')}`}
                 whileFocus={{ scale: 1.01 }}
               />
+              {errors.name && (
+                <motion.p 
+                  className="text-accent text-sm mt-2 flex items-center gap-1"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <span>⚠️</span> {errors.name}
+                </motion.p>
+              )}
             </motion.div>
 
             {/* Email Field */}
@@ -167,20 +270,24 @@ const Contacts = () => {
                 onChange={handleChange}
                 onFocus={() => setFocusedField('email')}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-4 py-4 bg-surface-light border-2 rounded-xl text-text-primary placeholder-text-muted focus:outline-none transition-all duration-300 ${
-                  focusedField === 'email' 
-                    ? 'border-secondary shadow-lg shadow-secondary/20' 
-                    : 'border-border hover:border-border-light'
-                }`}
-                required
+                className={`w-full px-4 py-4 bg-surface-light border-2 rounded-xl text-text-primary placeholder-text-muted focus:outline-none transition-all duration-300 ${getInputBorderClass('email')}`}
                 whileFocus={{ scale: 1.01 }}
               />
+              {errors.email && (
+                <motion.p 
+                  className="text-accent text-sm mt-2 flex items-center gap-1"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <span>⚠️</span> {errors.email}
+                </motion.p>
+              )}
             </motion.div>
 
             {/* Message Field */}
             <motion.div className="mb-8" variants={formFieldVariants}>
               <label className="flex items-center gap-2 text-text-secondary text-sm font-semibold mb-2">
-                <HiChatAlt2 className="text-accent-light" />
+                <HiChatAlt2 className="text-primary-light" />
                 Your Message
               </label>
               <motion.textarea 
@@ -191,20 +298,24 @@ const Contacts = () => {
                 onChange={handleChange}
                 onFocus={() => setFocusedField('message')}
                 onBlur={() => setFocusedField(null)}
-                className={`w-full px-4 py-4 bg-surface-light border-2 rounded-xl text-text-primary placeholder-text-muted focus:outline-none resize-none transition-all duration-300 ${
-                  focusedField === 'message' 
-                    ? 'border-accent shadow-lg shadow-accent/20' 
-                    : 'border-border hover:border-border-light'
-                }`}
-                required
+                className={`w-full px-4 py-4 bg-surface-light border-2 rounded-xl text-text-primary placeholder-text-muted focus:outline-none resize-none transition-all duration-300 ${getInputBorderClass('message')}`}
                 whileFocus={{ scale: 1.01 }}
               />
+              {errors.message && (
+                <motion.p 
+                  className="text-accent text-sm mt-2 flex items-center gap-1"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <span>⚠️</span> {errors.message}
+                </motion.p>
+              )}
             </motion.div>
 
             {/* Submit Button */}
             <motion.div variants={itemVariants}>
               <motion.button 
-                onClick={handleSubmit}
+                type="submit"
                 disabled={isSubmitting}
                 className='relative w-full sm:w-auto px-8 py-4 text-lg font-semibold text-text-primary bg-primary hover:bg-primary-dark overflow-hidden rounded-xl transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(13, 148, 136, 0.3)" }}
@@ -227,7 +338,7 @@ const Contacts = () => {
               </motion.button>
             </motion.div>
 
-          </div>
+          </form>
         </motion.div>
 
         {/* Social proof */}
