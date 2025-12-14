@@ -138,7 +138,7 @@ const Home = () => {
             className='text-text-secondary text-base sm:text-lg leading-relaxed backdrop-blur-sm bg-surface-light/30 p-4 rounded-lg border border-border hover:border-primary/40 transition-all duration-300'
             whileHover={{ x: 5, borderColor: 'rgba(13, 148, 136, 0.4)' }}
           >
-            I have more than <span className="text-secondary-light font-bold">2 years of experience</span> building responsive websites, e-commerce platforms, and web applications with user-centered design.
+            I have more than <span className="text-secondary-light font-bold">2 years of experience</span> building responsive websites, mobile applications (both android and ios), e-commerce platforms, and web applications with user-centered design.
           </motion.p>
         </motion.div>
 
