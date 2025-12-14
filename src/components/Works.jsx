@@ -13,12 +13,12 @@ const Works = () => {
         <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
 
             <div className='pb-8'>
-                <p className='text-4xl font-bold inline border-b-4 border-yellow-400'>Work</p>
-                <p>Here`s is a brief view to some of my recent works, checkout!!</p>
+                <p data-aos="fade-up" className='text-4xl font-bold inline border-b-4 border-yellow-400'>Work</p>
+                <p data-aos="fade-up" data-aos-delay="100">Here`s is a brief view to some of my recent works, checkout!!</p>
             </div>
 
             <div className='grid sm:grid-cols-3 md-grid-cols-2 gap-4'>
-                <div style={{backgroundImage: `url(${Schoolportal})`}}
+                <div data-aos="flip-left" data-aos-delay="100" style={{backgroundImage: `url(${Schoolportal})`}}
                 className='shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto mb-5 content-div'>
 
                   <div className='opacity-0 group-hover:opacity-100'>
@@ -38,7 +38,7 @@ const Works = () => {
                   </div>
                   </div>
 
-                  <div style={{backgroundImage: `url(${Foody})`}}
+                  <div data-aos="flip-left" data-aos-delay="200" style={{backgroundImage: `url(${Foody})`}}
                 className='shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto mb-5 content-div'>
 
                   <div className='opacity-0 group-hover:opacity-100'>
@@ -57,7 +57,7 @@ const Works = () => {
                 </div>
             </div>
 
-            <div style={{backgroundImage: `url(${Todo})`}}
+            <div data-aos="flip-left" data-aos-delay="300" style={{backgroundImage: `url(${Todo})`}}
                 className='shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto mb-5 content-div'>
 
                   <div className='opacity-0 group-hover:opacity-100'>
@@ -78,7 +78,7 @@ Todo List App
             </div>
 
             <div className='grid sm:grid-cols-3 md-grid-cols-2 gap-4'>
-                <div style={{backgroundImage: `url(${QuoteGenerator})`}}
+                <div data-aos="flip-right" data-aos-delay="100" style={{backgroundImage: `url(${QuoteGenerator})`}}
                 className='shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto mb-5 content-div'>
 
                   <div className='opacity-0 group-hover:opacity-100'>
@@ -96,7 +96,7 @@ Todo List App
                   </div>
                   </div>
 
-                  <div style={{backgroundImage: `url(${DiceGame}`}}
+                  <div data-aos="flip-right" data-aos-delay="200" style={{backgroundImage: `url(${DiceGame}`}}
                 className='shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto mb-5 content-div'>
 
                   <div className='opacity-0 group-hover:opacity-100'>
@@ -116,7 +116,7 @@ Todo List App
             </div>
             
 
-            <div style={{backgroundImage: `url(${DrumKit})`}}
+            <div data-aos="flip-right" data-aos-delay="300" style={{backgroundImage: `url(${DrumKit})`}}
                 className='shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto mb-5 content-div'>
 
                   <div className='opacity-0 group-hover:opacity-100'>
