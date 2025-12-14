@@ -1,50 +1,50 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import Schoolportal from '../assets/schoolporalImage.png';
-import Foody from '../assets/food-landing-page.avif';
-import Todo from '../assets/Todo App.jpeg';
-import QuoteGenerator from '../assets/Quote genrator.png';
+import Scanner from '../assets/scanner.png';
+import Portal from '../assets/portal.png';
+import Gemini from '../assets/gemini.png';
+import Hrs from '../assets/hrs.png';
 import DiceGame from '../assets/Dice game.jpeg';
-import DrumKit from '../assets/Drum kit.jpeg';
+import Linkup from '../assets/linkup.png';
 
 const Works = () => {
   const projects = [
     {
       title: 'Barcode Scanner App',
-      image: Schoolportal,
-      demo: '/',
+      image: Scanner,
+      demo: 'https://drive.google.com/drive/folders/1aBmXOo3XxE_ADhKiCiWuxh67S19TQ3J_?usp=sharing',
       code: 'https://github.com/muhammed-codes/scan-item',
     },
     {
       title: 'Family Portal',
-      image: Foody,
+      image: Portal,
       demo: '/',
       code: 'https://github.com/bomaolad/the_royal_chuckles',
     },
     {
       title: 'Gemini Clone',
-      image: Todo,
+      image: Gemini,
       demo: '',
       code: 'https://github.com/bomaolad/gemini-clone',
     },
     {
-      title: 'Random Quote Generator',
-      image: QuoteGenerator,
-      demo: 'https://random-quote-generator-seven-ashen.vercel.app/',
-      code: 'https://github.com/Hammad153/Random-quote-Generator',
+      title: 'HRS App',
+      image: Hrs,
+      demo: '',
+      code: 'https://github.com/bomaolad/hrs-app',
     },
     {
       title: 'JS Dice Game',
       image: DiceGame,
       demo: 'https://dice-game-i6kj.vercel.app/',
-      code: 'https://github.com/Hammad153/Dice-Game-',
+      code: 'https://github.com/bomaolad/dicee-challenge',
     },
     {
-      title: 'Drum Kit App',
-      image: DrumKit,
-      demo: 'https://drum-kit-app-nu.vercel.app/',
-      code: 'https://github.com/Hammad153/Drum-kit-app',
+      title: 'Linkup Social Media App',
+      image: Linkup,
+      demo: '',
+      code: 'https://github.com/bomaolad/linkup',
     }
   ];
 

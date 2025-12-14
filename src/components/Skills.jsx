@@ -14,7 +14,7 @@ const Skills = () => {
   const skills = [
     { name: 'HTML', icon: Html },
     { name: 'CSS', icon: Css },
-    { name: 'JAVASCRIPT/TYPESCRIPT', icon: JS_TS },
+    { name: 'JS/TS', icon: JS_TS },
     { name: 'TAILWIND CSS', icon: Tailwind },
     { name: 'REACT', icon: Reactlogo },
     { name: 'REACT NATIVE', icon: ReactNative },
