@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaLinkedin, FaGithub, FaTwitter, FaHeart } from 'react-icons/fa';
+import { FaWhatsapp, FaGithub, FaTwitter, FaHeart } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 
 function Footer() {
@@ -8,7 +8,7 @@ function Footer() {
   const currentYear = date.getFullYear();
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/ismail-hammad-bb73152b9' },
+    { name: 'WhatsApp', icon: FaWhatsapp, url: 'https://api.whatsapp.com/send?phone=2348160374083' },
     { name: 'Github', icon: FaGithub, url: 'https://github.com/bomaolad' },
     { name: 'Twitter', icon: FaTwitter, url: 'https://x.com/muhammedbello_' },
     { name: 'Email', icon: HiOutlineMail, url: 'mailto:bellomuhammadoladimeji@gmail.com' },
