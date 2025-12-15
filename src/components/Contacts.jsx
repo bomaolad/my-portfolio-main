@@ -13,27 +13,23 @@ const Contacts = () => {
   const [focusedField, setFocusedField] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Email validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const validateForm = () => {
     const newErrors = {};
 
-    // Name validation
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     } else if (formData.name.trim().length < 2) {
       newErrors.name = 'Name must be at least 2 characters';
     }
 
-    // Email validation
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!emailRegex.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    // Message validation
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     } else if (formData.message.trim().length < 10) {
@@ -51,7 +47,6 @@ const Contacts = () => {
       [name]: value
     });
     
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors({
         ...errors,
@@ -63,7 +58,6 @@ const Contacts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate form
     if (!validateForm()) {
       toast.error('Kindly fill all the required fields correctly', {
         icon: '⚠️',
@@ -79,15 +73,24 @@ const Contacts = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://getform.io/f/avreokoa', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: '0c5c5316-e639-4242-9db9-25556bb40ba8', 
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Message from ${formData.name}. {Portfolio Contact}`,
+        }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         toast.success('Message sent successfully! I\'ll get back to you soon.', {
           icon: '🎉',
           duration: 5000,
@@ -167,7 +170,6 @@ const Contacts = () => {
   return (
     <div name='contact' className='bg-surface-light w-full min-h-screen flex justify-center items-center p-4 relative overflow-hidden'>
       
-      {/* Toast Container */}
       <Toaster 
         position="top-right"
         toastOptions={{
@@ -175,7 +177,6 @@ const Contacts = () => {
         }}
       />
       
-      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
           className="absolute w-96 h-96 top-1/4 -left-48 bg-primary/10 rounded-full blur-3xl"
@@ -197,7 +198,6 @@ const Contacts = () => {
         viewport={{ once: true, amount: 0.2 }}
       >
         
-        {/* Header */}
         <motion.div className="pb-8 text-center lg:text-left" variants={itemVariants}>
           <div className="inline-block relative mb-4">
             <h2 className='text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-light'>
@@ -217,7 +217,6 @@ const Contacts = () => {
           </p>
         </motion.div>
 
-        {/* Form Container */}
         <motion.div 
           className="relative group" 
           variants={itemVariants}
@@ -228,7 +227,6 @@ const Contacts = () => {
           
           <form onSubmit={handleSubmit} className='relative bg-surface backdrop-blur-sm p-8 sm:p-10 rounded-3xl border border-border shadow-2xl'>
             
-            {/* Name Field */}
             <motion.div className="mb-6" variants={formFieldVariants}>
               <label className="flex items-center gap-2 text-text-secondary text-sm font-semibold mb-2">
                 <HiUser className="text-primary-light" />
@@ -256,7 +254,6 @@ const Contacts = () => {
               )}
             </motion.div>
 
-            {/* Email Field */}
             <motion.div className="mb-6" variants={formFieldVariants}>
               <label className="flex items-center gap-2 text-text-secondary text-sm font-semibold mb-2">
                 <HiMail className="text-secondary-light" />
@@ -284,7 +281,6 @@ const Contacts = () => {
               )}
             </motion.div>
 
-            {/* Message Field */}
             <motion.div className="mb-8" variants={formFieldVariants}>
               <label className="flex items-center gap-2 text-text-secondary text-sm font-semibold mb-2">
                 <HiChatAlt2 className="text-primary-light" />
@@ -312,7 +308,6 @@ const Contacts = () => {
               )}
             </motion.div>
 
-            {/* Submit Button */}
             <motion.div variants={itemVariants}>
               <motion.button 
                 type="submit"
@@ -341,7 +336,6 @@ const Contacts = () => {
           </form>
         </motion.div>
 
-        {/* Social proof */}
         <motion.div 
           className="mt-8 text-center"
           variants={itemVariants}
