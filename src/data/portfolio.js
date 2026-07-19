@@ -1,7 +1,4 @@
-/**
- * Portfolio data — add a new project by appending one object here.
- * No component code needs to change.
- */
+
 
 /** @typedef {{ title: string, context: string, role: string, outcome: string, technologies: string[], demo: string, code: string }} Project */
 
@@ -55,10 +52,10 @@ export const SKILL_CATEGORIES = [
   },
   {
     title: 'Backend & Database',
-    skills: ['Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'GraphQL'],
+    skills: ['Node.js', 'Express.js', 'NestJS', 'PostgreSQL', 'MongoDB', 'GraphQL'],
   },
   {
     title: 'Languages & Core',
-    skills: ['JavaScript', 'TypeScript', 'REST APIs', 'Git'],
+    skills: ['JavaScript', 'TypeScript', 'Python', 'Go', 'REST APIs', 'Git', 'Docker', 'Postman'],
   },
 ];
