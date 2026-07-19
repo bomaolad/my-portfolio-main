@@ -1,23 +1,25 @@
-import React from "react";
-import { ThemeProvider } from "./context/ThemeContext";
-import Header from "./components/Header";
-import Home from "./components/Home";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Works from "./components/Works";
-import Contacts from "./components/Contacts";
-import Footer from "./components/Footer";
+import React from 'react';
+import { ThemeProvider } from './context/ThemeContext';
+import Header from './components/sections/Header';
+import Hero from './components/sections/Hero';
+import About from './components/sections/About';
+import Skills from './components/sections/Skills';
+import Works from './components/sections/Works';
+import Contacts from './components/sections/Contacts';
+import Footer from './components/sections/Footer';
 
 function App() {
   return (
     <ThemeProvider>
-      <div>
+      <div className='flex flex-col min-h-screen'>
         <Header />
-        <Home />
-        <About />
-        <Skills />
-        <Works />
-        <Contacts />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Works />
+          <Contacts />
+        </main>
         <Footer />
       </div>
     </ThemeProvider>
